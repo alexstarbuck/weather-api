@@ -1,0 +1,33 @@
+name: Daily Weather Logger
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # every day at 6AM UTC
+  workflow_dispatch:       # allow manual trigger
+
+jobs:
+  run-weather-logger:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests gspread google-auth
+
+    - name: Decode credentials and run script
+      env:
+        VISUALCROSSING_API_KEY: ${{ secrets.VISUALCROSSING_API_KEY }}
+        GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+      run: |
+        echo "$GOOGLE_CREDENTIALS_JSON" > google-credentials.json
+        python weather_pull.py
+
