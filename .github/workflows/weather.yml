@@ -29,5 +29,5 @@ jobs:
         GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
       run: |
         echo "$GOOGLE_CREDENTIALS_JSON" > google-credentials.json
-        python weather_pull.py
+        python weather-pull.py
 
