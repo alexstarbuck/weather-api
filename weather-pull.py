@@ -5,7 +5,7 @@ from google.oauth2.service_account import Credentials
 # --- CONFIGURATION ---
 API_KEY = "L5XK5ZVUM6PUPKEDB36XVCHGB"
 LOCATION = "Zagreb"
-DAYS_BACK = 1
+DAYS_BACK = 3
 GOOGLE_SHEET_NAME = "weather-data-api"  # Must match your actual sheet name
 CREDENTIALS_FILE = "google-credentials.json"
 
