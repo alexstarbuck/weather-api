@@ -1,0 +1,5 @@
+weather-api-virtualenv/
+*.pyc
+google-credentials.json
+*.txt
+.DS_Store
